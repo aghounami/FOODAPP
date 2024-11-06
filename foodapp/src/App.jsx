@@ -1,10 +1,22 @@
-import { useState } from 'react'
+import { useState } from "react";
+import Search from "./component/search.jsx";
 function App() {
-  const [count, setCount] = useState(0)
+  const [data, setfooddata] = useState("");
 
   return (
-   <h1 className="text-[#c22c2c]"> hello world </h1>
-  )
+    <div className="m-6 ">
+      <Search setfooddata={setfooddata} data={data} />
+      <div className="grid grid-cols-3 gap-4">
+        {data &&
+          data.map((item) => (
+            <div key={item.id} className="">
+              <h1>{item.title}</h1>
+              <img src={item.image} alt={item.title} />
+            </div>
+          ))}
+      </div>
+    </div>
+  );
 }
 
-export default App
+export default App;
